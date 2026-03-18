@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Lam Giang 💖</title>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Courier New', monospace;
+  background: #ffd6e8;
+}
+
+/* chữ giữa */
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ff4d88;
+  z-index: 10;
+  display: none;
+}
+
+.center-text h1 {
+  font-size: 22px;
+}
+
+.center-text p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* ảnh bay */
+img.floating {
+  position: absolute;
+  width: 120px;
+  border-radius: 15px;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-120px);
+    opacity: 1;
+  }
+}
+
+/* icon bay */
+.icon {
+  position: absolute;
+  font-size: 20px;
+  animation: floatUp linear infinite;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NHẠC -->
+<audio id="music" loop>
+  <source src="nhac.mp3" type="audio/mpeg">
+</audio>
+
+<!-- CHỮ -->
+<div class="center-text" id="mainText">
+  <h1>
+    Chúc Lam Giang tuổi 19 là người hạnh phúc nhất thế giới,<br>
+    xinh đẹp nhất thế giới, học giỏi nhất thế giới<br>
+    và nhiệt huyết nhất nhé. iu Lam Giang nhiều lắm lắm 💖
+  </h1>
+  <p>From: Thu Phương (bé Ù) hihihihihi</p>
+</div>
+
+<script>
+alert("Xin lỗi Lam Giang vì sự chậm trễ này huhu 💔");
+
+// click 1 lần để phát nhạc (fix Chrome)
+document.body.addEventListener("click", () => {
+  document.getElementById("music").play();
+}, { once: true });
+
+// hiện chữ
+document.getElementById("mainText").style.display = "block";
+
+// danh sách ảnh
+const images = [
+  "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg",
+  "6.jpg","7.jpg","8.jpg","9.jpg","10.jpg"
+];
+
+// tạo ảnh bay
+function createImage() {
+  const img = document.createElement("img");
+  img.src = images[Math.floor(Math.random() * images.length)];
+  img.className = "floating";
+
+  img.style.left = Math.random() * 100 + "vw";
+  img.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+  document.body.appendChild(img);
+
+  setTimeout(() => {
+    img.remove();
+  }, 10000);
+}
+
+setInterval(createImage, 800);
+
+// icon bay
+const icons = ["🌸","🎂","💖","🌷"];
+
+function createIcon() {
+  const icon = document.createElement("div");
+  icon.className = "icon";
+  icon.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+
+  icon.style.left = Math.random() * 100 + "vw";
+  icon.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+  document.body.appendChild(icon);
+
+  setTimeout(() => {
+    icon.remove();
+  }, 8000);
+}
+
+setInterval(createIcon, 500);
+</script>
+
+</body>
+</html>
